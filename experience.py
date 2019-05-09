@@ -7,6 +7,7 @@ import gpio
 
 from time import sleep
 from threading import Thread
+from random import random
 import math
 
 from starting_block import manage_time_elapsed
@@ -22,18 +23,12 @@ gpio.set_pin_mode(      switch_pin_bcm,     gpio.INPUT)
 ax = AX12(121)
 ax.move(100)
 
-
-
 previous = gpio.digital_read(switch_pin_bcm)
 while 1:
-    if gpio.digital_read(switch_pin_bcm) == 1:
-        print("yes !")
-    else:
-        print("no !")
-    sleep(1)
+    sleep(random()*2)
     if gpio.digital_read(switch_pin_bcm) != previous:
         if previous :
-            ax.move(128)
+            ax.move(130)
         else:
             ax.move(100)
         previous = 1-previous
