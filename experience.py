@@ -35,5 +35,5 @@ while 1:
         if previous :
             ax.move(128)
         else:
-            ax.move(120)
+            ax.move(100)
         previous = 1-previous
