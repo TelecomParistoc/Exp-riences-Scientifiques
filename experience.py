@@ -20,15 +20,25 @@ switch_pin_bcm = 6
 gpio.set_pull_up_down(  switch_pin_bcm,     gpio.PULL_UP)
 gpio.set_pin_mode(      switch_pin_bcm,     gpio.INPUT)
 
-ax = AX12(121)
-ax.move(100)
+ax_shoot = AX12(121)
+ax_shoot.move(100)
+ax_pump = AX12(163)
+ax_pump.move(-30)
+ax_pump.set_speed(5)
+
+turning_left = True
 
 previous = gpio.digital_read(switch_pin_bcm)
-while 1:
-    sleep(random()*2)
-    if gpio.digital_read(switch_pin_bcm) != previous:
-        if previous :
-            ax.move(130)
-        else:
-            ax.move(100)
-        previous = 1-previous
+
+while gpio.digital_read(switch_pin_bcm) == previous:
+    sleep(1)
+    
+ax_shoot.move(130)
+
+while True:
+    if turning_left:
+        ax_pump.move(30)
+    else:
+        ax_pump.move(-30)
+    turning_left = not turning_left
+    sleep(3)
