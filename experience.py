@@ -11,6 +11,8 @@ import math
 
 from starting_block import manage_time_elapsed
 
+gpio.init()
+
 #switch_pin_bcm    = gpio.gpio_index_of_wpi_pin    (22)
 switch_pin_bcm = 6
 
