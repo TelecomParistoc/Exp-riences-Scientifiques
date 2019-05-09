@@ -17,6 +17,12 @@ switch_pin_bcm = 6
 gpio.set_pull_up_down(  switch_pin_bcm,     gpio.PULL_UP)
 gpio.set_pin_mode(      switch_pin_bcm,     gpio.INPUT)
 
+ax = AX12(121)
+ax.turn(50)
+
 while 1:
     if gpio.digital_read(switch_pin_bcm) == 1:
         print("yes !")
+    else:
+        print("no !")
+    sleep(1)
