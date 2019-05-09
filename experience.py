@@ -21,9 +21,8 @@ gpio.set_pin_mode(      switch_pin_bcm,     gpio.INPUT)
 
 ax = AX12(121)
 ax.move(100)
-val = 100
-sleep(1)
-ax.move(128)
+
+
 
 previous = gpio.digital_read(switch_pin_bcm)
 while 1:
@@ -33,7 +32,8 @@ while 1:
         print("no !")
     sleep(1)
     if gpio.digital_read(switch_pin_bcm) != previous:
+        if previous :
+            ax.move(128)
+        else:
+            ax.move(120)
         previous = 1-previous
-        val += 5
-        ax.move(val)
-        print val
