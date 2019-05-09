@@ -1,6 +1,6 @@
 
 
-from robot import Robot		#robot is an installed package
+from robot import Robot		#robot is an installed package.
 import motordriver
 from AX12 import AX12
 import gpio
